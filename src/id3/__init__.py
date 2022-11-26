@@ -38,6 +38,8 @@ def _id3(df: pd.DataFrame, label: str, tree: dict) -> str | dict:
     Returns:
         str | dict: A dictionary representing the decision tree for the given dataset.
     """
+    if len(df.columns) == 1:
+        return tree
     f = max_info_gain_feature(df, label)
     tree[f] = {}
     subtree = tree[f]
